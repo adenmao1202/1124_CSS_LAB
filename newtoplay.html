@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aden's Personal Page</title>
+    <link rel="stylesheet" href="newtoplay.css">
+</head>
+
+<body>
+    <h1 class="heading">Aden's Personal Page</h1>
+    <p class="body"><em>Welcome to my personal space. Explore and enjoy!</em></p>
+
+    
+<div class="profile-section">
+    <canvas id="donutCanvas"></canvas>
+    <script>
+            const canvas = document.getElementById('donutCanvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            let A = 0;
+            let B = 0;
+
+            function draw() {
+                const cosA = Math.cos(A);
+                const sinA = Math.sin(A);
+                const cosB = Math.cos(B);
+                const sinB = Math.sin(B);
+
+                ctx.fillStyle = 'rgba(2, 5, 5, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < 628; i += 0.1) {
+                    const cosI = Math.cos(i);
+                    const sinI = Math.sin(i);
+
+                    const circleX = cosI;
+                    const circleY = sinI;
+
+                    const donutX = cosA * circleX - sinA * (sinB * circleY + cosB * circleX);
+                    const donutY = cosB * circleY - sinB * circleX;
+
+                    const x = donutX * 240 + canvas.width / 2;
+                    const y = donutY * 240 + canvas.height / 2;
+
+                    const pixelBrightness = Math.floor((cosI * cosA * (sinB * circleY + cosB * circleX) - cosB * cosI) * 255);
+                    const color = `rgb(${pixelBrightness},${pixelBrightness},${pixelBrightness})`;
+
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x, y, 2, 2);
+                }
+
+                A += 0.02;
+                B += 0.01;
+
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        </script>
+
+
+
+    <p><em>Hi, I'm Aden. I'm a student at NCCU, a Male, and an INFJ. About to be 23.</em></p>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Skills ▼</button>
+        <div class="dropdown-content">
+            <a href="#" class="dropdown-item">Web Design</a>
+            <a href="#" class="dropdown-item">Graphic Design</a>
+            <a href="#" class="dropdown-item">Digital Marketing</a>
+        </div>
+    </div>
+
+    <ul class="navbar">
+        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item dropdown">
+            <span>Services ▼</span>
+            <div class="dropdown-content">
+                <select>
+                    <option value="web-design">Web Design</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="digital-marketing">Digital Marketing</option>
+                </select>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <span>Contact ▼</span>
+            <div class="dropdown-content">
+                <select>
+                    <option value="facebook">facebook</option>
+                    <option value="twitter">twitter</option>
+                    <option value="linkedin">linkedin</option>
+                </select>
+            </div>
+        </li>
+    </ul>
+
+    <p><em>This is my first time creating my own page. Thank you for visiting this page.</em></p>
+
+    <div class="social-links">
+        <a href="https://www.facebook.com/ibrahimovic.zlatan.35574406/" class="social-icon" target="_blank">Facebook</a>
+        <a href="https://twitter.com/yourusername" class="social-icon" target="_blank">Twitter</a>
+        <a href="https://www.linkedin.com/in/yourusername" class="social-icon" target="_blank">LinkedIn</a>
+    </div>
+</body>
+
+</html>
